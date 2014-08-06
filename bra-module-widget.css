@@ -61,6 +61,8 @@
 
 .mw-container {
 	display: none;
+	max-height: 350px;
+	overflow-y: auto;
 }
 
 .mw-container ul {

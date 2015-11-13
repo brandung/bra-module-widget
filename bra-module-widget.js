@@ -71,6 +71,10 @@
 	 * @private
 	 */
 	_.addListener = function () {
+
+		// handle breakpoint change
+		Brandung.Vars.$doc.on('on-changed-breakpoint', _.handleBreakpointChange);
+
 		// open widget
 		self.settings.widget.find('.mw-open').on('click', function () {
 			$(this).toggleClass('is-active');
@@ -271,6 +275,18 @@
 
 
 	/**
+	 * Show/Hide Widget on breakpoint change
+	 */
+	_.handleBreakpointChange = function () {
+		if(Brandung.Function.assertBreakpoint('lt', 'md')) {
+			self.settings.widget.hide();
+		} else {
+			self.settings.widget.show();
+		}
+	};
+
+
+	/**
 	 * init the plugin
 	 *
 	 * @param {object} settings
@@ -280,6 +296,7 @@
 		self.settings = $.extend(self.settings, settings);
 
 		_.addWidget();
+		_.handleBreakpointChange();
 	};
 
 	return self;

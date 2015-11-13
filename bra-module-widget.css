@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.css v1.0
+ * bra_module-widget.css v1.1.0
  * https://github.com/brandung/bra-module-widget
  *
  * @author: Simon Kemmerling
@@ -23,7 +23,7 @@
 .mw-header {
 	position: relative;
 	background: #000;
-	color: #fff;
+	color: #fff !important;
 	padding: 10px;
 }
 
@@ -35,6 +35,7 @@
 	line-height: 0;
 	height: 0;
 	overflow: hidden;
+	color: #fff !important;
 }
 
 .mw-header h3 {
@@ -43,6 +44,7 @@
 	float: left;
 	padding-right: 10px;
 	font-weight: bold;
+	margin-right: 25px;
 }
 
 .mw-header span {
@@ -50,13 +52,30 @@
 	cursor: pointer;
 	width: 20px;
 	height: 20px;
+	margin-left: 5px;
 	overflow: hidden;
 	text-indent: -60em;
-	background: url('sprite.gif') no-repeat 0 -20px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAUCAIAAAD0og/CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQwODVEQjhBNEQ5RjExRTU4MkZEQTZGRTU0RUU4OUMzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQwODVEQjhCNEQ5RjExRTU4MkZEQTZGRTU0RUU4OUMzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDA4NURCODg0RDlGMTFFNTgyRkRBNkZFNTRFRTg5QzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDA4NURCODk0RDlGMTFFNTgyRkRBNkZFNTRFRTg5QzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7gRvmeAAAAsUlEQVR42uxXWwrAIAyz4v2v7MY+hjhbsvkcJl9OGtqGNjjnCIKYDLlPMUaUI5Ld7MZFycWwVlzt3DsvyPVcLhwU68XchdXKNTaxl22LnIlSY8o+LbGKoRrf7h+k3GFplmcDY/QyOvUas1IpuTBmNBrqZXfqDWaNUpruv0awlcZXSVP26QireVZWOTQcO7+zjFx8Z0HbwHcW9jejXFKsrwZfY6ituG8NflbNBEFMwSHAAK6c2rdHwfKdAAAAAElFTkSuQmCC) no-repeat;
 }
 
-.mw-header span.is-active {
+.mw-open {
 	background-position: 0 0;
+}
+
+span.mw-grid {
+	background-position: -40px 0;
+}
+
+.mw-grid.is-active {
+	background-position: -60px 0;
+}
+
+span.mw-remove {
+	background-position: -80px 0;
+}
+
+.mw-open.is-active {
+	background-position: -20px 0;
 }
 
 .mw-container {
@@ -69,6 +88,13 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+
+.mw-headline {
+	text-transform: uppercase !important;
+	font-family: 'Lucida Console', monospace !important;
+	font-style: italic !important;
+	color: cornflowerblue !important;
 }
 
 .mw-container li {

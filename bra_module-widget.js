@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.0.1
+ * bra_module-widget.js v2.0.2
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html

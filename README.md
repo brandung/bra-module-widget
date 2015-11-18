@@ -1,4 +1,4 @@
-bra-module-widget
+bra_module-widget
 =================
 
-Insert widget in _modules.html for quick navigation to each module element on page
+Insert a widget in _modules.html to quickly jump to a certain component

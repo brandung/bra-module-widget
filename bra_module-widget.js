@@ -1,6 +1,6 @@
 /**
  * bra_module-widget.js v2.0.0
- * https://github.com/brandung/bra-module-widget
+ * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
  * for quick navigation to each module element on page

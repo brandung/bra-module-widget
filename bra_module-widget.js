@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.0.2
+ * bra_module-widget.js v2.1.0
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -18,11 +18,11 @@
 	var self = {
 		settings: {
 			widgetName: 'bra-module-widget',		// String: Selector name of the widget
-			mwHeader: '.mw-header',					// Selector: Widget Header
+			mwHeader: '.mw-header',			        // Selector: Widget Header
 			mwContainer: '.mw-container',			// Selector: Widget Container
 			mwCheckbox: '.mw-container__check',		// Selector: Checkbox on each module headline
 			deepLinkObj: '.mw-headline',			// Selector: Selector to navigate
-			isStickyHeader: true,					// Boolean: set sticky header value
+			isStickyHeader: true,				// Boolean: set sticky header value
 			stickyHeader: '.main-nav-wrapper'		// Selector: Sticky Header wrapper
 		}
 	},
@@ -67,7 +67,7 @@
 	_.addListener = function () {
 
 		// handle breakpoint change
-		Brandung.Vars.$doc.on('on-changed-breakpoint', _.handleBreakpointChange);
+		Capitan.Vars.$doc.on('on-changed-breakpoint', _.handleBreakpointChange);
 
 		// open widget
 		self.settings.widget.find('.mw-open').on('click', function () {
@@ -272,7 +272,7 @@
 	 * Show/Hide Widget on breakpoint change
 	 */
 	_.handleBreakpointChange = function () {
-		if(Brandung.Function.assertBreakpoint('lt', 'md')) {
+		if(Capitan.Function.assertBreakpoint('lt', 'md')) {
 			self.settings.widget.hide();
 		} else {
 			self.settings.widget.show();

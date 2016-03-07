@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.1.0
+ * bra_module-widget.js v2.2.0
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -22,8 +22,9 @@
 			mwContainer: '.mw-container',			// Selector: Widget Container
 			mwCheckbox: '.mw-container__check',		// Selector: Checkbox on each module headline
 			deepLinkObj: '.mw-headline',			// Selector: Selector to navigate
-			isStickyHeader: true,				// Boolean: set sticky header value
-			stickyHeader: '.main-nav-wrapper'		// Selector: Sticky Header wrapper
+			isStickyHeader: true,					// Boolean: set sticky header value
+			stickyHeader: '.main-nav-wrapper',		// Selector: Sticky Header wrapper
+			compParam: 'comp'						// String: URL Parameter name for single component
 		}
 	},
 		_ ={};
@@ -57,7 +58,36 @@
 		_.getDeepLinks();
 		// bind draggable event
 		_.draggable();
+		// check if only one component should been showed
+		_.showComponent();
+
+
 	};
+
+	/**
+	 * Show only single component
+	 *
+	 * @private
+	 */
+	_.showComponent = function () {
+		if(_.getParam(self.settings.compParam)) {
+			// hide all components
+			self.settings.widget.find('.mw-check').click();
+
+			// show single component if string matched
+			$(self.settings.mwCheckbox).each(function() {
+
+				var _this = $(this),
+					selfText = $.trim(_this.prev().text());
+
+				if(selfText.toLowerCase() === _.getParam(self.settings.compParam).toLowerCase()) {
+					_this.click();
+					return false;
+				}
+			});
+		}
+	};
+
 
 	/**
 	 * Add Event Listener
@@ -277,6 +307,25 @@
 		} else {
 			self.settings.widget.show();
 		}
+	};
+
+	/**
+	 * Get URL parameter value
+	 *
+	 * @param name
+	 * @returns {*}
+	 */
+	_.getParam = function (name) {
+
+		var params = window.location.search.substr(1).split('&');
+		for (var i = 0; i < params.length; i++) {
+			var path = params[i].split('=');
+			if (path[0] == name) {
+				return decodeURIComponent(path[1]);
+			}
+		}
+
+		return false;
 	};
 
 

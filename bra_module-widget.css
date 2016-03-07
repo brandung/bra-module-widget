@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.css v2.0.2
+ * bra_module-widget.css v2.2.1
  * https://github.com/brandung/bra_module-widget
  *
  * @author: Simon Kemmerling
@@ -11,20 +11,68 @@
  */
 
 #bra-module-widget {
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+
 	position: fixed;
-	top: 20px;
-	left: 20px;
+	top: 0;
+	right: -280px;
 	background: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,.8);
 	z-index: 9999;
 	font: 14px/16px Helvetica, 'sans-serif' !important;
+	height: 100%;
+	width: 280px;
+}
+
+#bra-module-widget.is-open {
+	-webkit-transform: translate3d(-280px,0,0);
+	-moz-transform: translate3d(-280px,0,0);
+	-ms-transform: translate3d(-280px,0,0);
+	-o-transform: translate3d(-280px,0,0);
+	transform: translate3d(-280px,0,0);
+}
+
+#bra-module-widget.is-mobile {
+	top: auto;
+	bottom: -360px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 400px;
+}
+
+#bra-module-widget.is-mobile.is-open {
+	-webkit-transform: translate3d(0,-360px,0);
+	-moz-transform: translate3d(0,-360px,0);
+	-ms-transform: translate3d(0,-360px,0);
+	-o-transform: translate3d(0,-360px,0);
+	transform: translate3d(0,-360px,0);
 }
 
 .mw-header {
-	position: relative;
+	position: absolute;
 	background: #000;
 	color: #fff !important;
 	padding: 10px;
+	transform: rotate(-90deg);
+	margin: 0 0 0 -160px;
+	top: 50%;
+}
+
+.is-mobile .mw-header {
+	position: relative;
+	transform: none;
+	margin: 0;
+	top: auto;
 }
 
 .mw-header:after {
@@ -88,9 +136,13 @@ span.mw-check {
 }
 
 .mw-container {
-	display: none;
-	max-height: 350px;
 	overflow-y: auto;
+	height:100%;
+}
+
+.is-mobile .mw-container {
+	overflow-y: auto;
+	height: 360px;
 }
 
 .mw-container ul {

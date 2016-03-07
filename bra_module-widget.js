@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.2.0
+ * bra_module-widget.js v2.2.1
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -57,12 +57,11 @@
 		// get deep links
 		_.getDeepLinks();
 		// bind draggable event
-		_.draggable();
+		//_.draggable();
 		// check if only one component should been showed
 		_.showComponent();
-
-
 	};
+
 
 	/**
 	 * Show only single component
@@ -197,9 +196,9 @@
 	 */
 	_.slideToggle = function () {
 		if (self.settings.widget.find('.mw-open').hasClass('is-active')) {
-			$(self.settings.mwContainer).slideDown();
+			$('#' + self.settings.widgetName).addClass('is-open');
 		} else {
-			$(self.settings.mwContainer).slideUp();
+			$('#' + self.settings.widgetName).removeClass('is-open');
 		}
 	};
 
@@ -303,11 +302,14 @@
 	 */
 	_.handleBreakpointChange = function () {
 		if(Capitan.Function.assertBreakpoint('lt', 'md')) {
-			self.settings.widget.hide();
+			//self.settings.widget.hide();
+			$('#' + self.settings.widgetName).addClass('is-mobile');
 		} else {
-			self.settings.widget.show();
+			//self.settings.widget.show();
+			$('#' + self.settings.widgetName).removeClass('is-mobile');
 		}
 	};
+
 
 	/**
 	 * Get URL parameter value

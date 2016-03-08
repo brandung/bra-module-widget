@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.2.1
+ * bra_module-widget.js v2.3.0
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -16,17 +16,18 @@
 (function ($) {
 
 	var self = {
-		settings: {
-			widgetName: 'bra-module-widget',		// String: Selector name of the widget
-			mwHeader: '.mw-header',			        // Selector: Widget Header
-			mwContainer: '.mw-container',			// Selector: Widget Container
-			mwCheckbox: '.mw-container__check',		// Selector: Checkbox on each module headline
-			deepLinkObj: '.mw-headline',			// Selector: Selector to navigate
-			isStickyHeader: true,					// Boolean: set sticky header value
-			stickyHeader: '.main-nav-wrapper',		// Selector: Sticky Header wrapper
-			compParam: 'comp'						// String: URL Parameter name for single component
-		}
-	},
+			settings: {
+				widgetName: 'bra-module-widget',		// String: Selector name of the widget
+				mwHeader: '.mw-header',			        // Selector: Widget Header
+				mwContainer: '.mw-container',			// Selector: Widget Container
+				mwCheckbox: '.mw-container__check',		// Selector: Checkbox on each module headline
+				deepLinkObj: '.mw-headline',			// Selector: Selector to navigate
+				isStickyHeader: true,					// Boolean: set sticky header value
+				stickyHeader: '.main-nav-wrapper',		// Selector: Sticky Header wrapper
+				compParam: 'comp',						// String: URL Parameter name for single component
+				hideParam: 'hide'						// String: URL Parameter name to hide the widget
+			}
+		},
 		_ ={};
 
 
@@ -58,8 +59,12 @@
 		_.getDeepLinks();
 		// bind draggable event
 		//_.draggable();
+
 		// check if only one component should been showed
 		_.showComponent();
+
+		// check if widget should be hidden
+		_.hideWidget();
 	};
 
 
@@ -84,6 +89,17 @@
 					return false;
 				}
 			});
+		}
+	};
+
+	/**
+	 * Show widget
+	 *
+	 * @private
+	 */
+	_.hideWidget = function () {
+		if(_.getParam(self.settings.hideParam) === 'true') {
+			self.settings.widget.remove();
 		}
 	};
 
@@ -124,7 +140,7 @@
 		// show/hide specific module
 		$('body').on('change', self.settings.mwCheckbox, function () {
 			var _this = $(this),
-					selfText = $.trim(_this.prev().text());
+				selfText = $.trim(_this.prev().text());
 
 			if($(this).is(":checked")) {
 				_.showModule(selfText);

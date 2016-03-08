@@ -9,3 +9,10 @@ To show only a single component per default on document load, you can trigger th
 ```
 /?comp=alert
 ```
+
+## Hide Widget
+To hide the widget, just set the GET parameter 'hide' to 'true'.
+
+```
+/?hide=true
+```

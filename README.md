@@ -16,3 +16,11 @@ To hide the widget, just set the GET parameter 'hide' to 'true'.
 ```
 /?hide=true
 ```
+
+## Delete hidden components
+You can delete the hidden components by following GET parameter 'delete=true'.
+Useful for iframe actions within the capitan-builder.
+
+```
+/?delete=true
+```

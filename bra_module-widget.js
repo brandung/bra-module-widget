@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.3.0
+ * bra_module-widget.js v2.4.0
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -25,7 +25,8 @@
 				isStickyHeader: true,					// Boolean: set sticky header value
 				stickyHeader: '.main-nav-wrapper',		// Selector: Sticky Header wrapper
 				compParam: 'comp',						// String: URL Parameter name for single component
-				hideParam: 'hide'						// String: URL Parameter name to hide the widget
+				hideParam: 'hide',						// String: URL Parameter name to hide the widget
+				deleteParam: 'delete'					// String: URL Parameter name to delete hidden components
 			}
 		},
 		_ ={};
@@ -62,9 +63,10 @@
 
 		// check if only one component should been showed
 		_.showComponent();
-
 		// check if widget should be hidden
 		_.hideWidget();
+		// check if hidden components should be deleted
+		_.deleteComponents();
 	};
 
 
@@ -77,6 +79,9 @@
 		if(_.getParam(self.settings.compParam)) {
 			// hide all components
 			self.settings.widget.find('.mw-check').click();
+
+			// hide headlines
+			$(self.settings.deepLinkObj).hide();
 
 			// show single component if string matched
 			$(self.settings.mwCheckbox).each(function() {
@@ -100,6 +105,17 @@
 	_.hideWidget = function () {
 		if(_.getParam(self.settings.hideParam) === 'true') {
 			self.settings.widget.remove();
+		}
+	};
+
+	/**
+	 * Show widget
+	 *
+	 * @private
+	 */
+	_.deleteComponents = function () {
+		if(_.getParam(self.settings.deleteParam) === 'true') {
+			$('.mw-wrapper:hidden').remove();
 		}
 	};
 

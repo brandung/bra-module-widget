@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.js v2.4.0
+ * bra_module-widget.js v2.5.0
  * https://github.com/brandung/bra_module-widget
  *
  * Insert widget in _modules.html
@@ -27,6 +27,10 @@
 				compParam: 'comp',						// String: URL Parameter name for single component
 				hideParam: 'hide',						// String: URL Parameter name to hide the widget
 				deleteParam: 'delete'					// String: URL Parameter name to delete hidden components
+			},
+			tpl: {
+				$col: '<div class="col-xs-3 col-sm-2 col-lg-1"></div>',	// Template: Col
+				columns: 12												// Integer: Col counts
 			}
 		},
 		_ ={};
@@ -54,6 +58,8 @@
 
 		// append widget
 		self.settings.widget.appendTo('body');
+		// add grid overlay
+		_.addGrid();
 		// add event listener
 		_.addListener();
 		// get deep links
@@ -67,6 +73,35 @@
 		_.hideWidget();
 		// check if hidden components should be deleted
 		_.deleteComponents();
+	};
+
+	/**
+	 * Build grid overlay markup
+	 * and append it to the body
+	 */
+	_.addGrid = function () {
+
+		function buildCols() {
+			var cols = '';
+			for (var i=0; i< self.tpl.columns; i++) {
+				cols += self.tpl.$col + '\n';
+			}
+			return cols;
+		}
+
+		var html = [
+			'<div id="mw-grid-overlay">',
+			//'<main>',
+			'<div class="container">',
+			'<div class="row">',
+			'' + buildCols() + '',
+			'</div>',
+			'</div>',
+			//'</main>',
+			'</div>'
+		].join("\n");
+
+		$(html).appendTo('body');
 	};
 
 
@@ -241,7 +276,7 @@
 	 * @private
 	 */
 	_.toggleGrid = function () {
-		$('body').toggleClass('util-show-grid');
+		$('body').toggleClass('mw-show-grid');
 	};
 
 

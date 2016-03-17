@@ -1,5 +1,5 @@
 /**
- * bra_module-widget.css v2.2.1
+ * bra_module-widget.css v2.5.0
  * https://github.com/brandung/bra_module-widget
  *
  * @author: Simon Kemmerling
@@ -193,4 +193,64 @@ span.mw-check {
 	position: relative;
 	left: auto;
 	float: right;
+}
+
+
+/* grid styling */
+#mw-grid-overlay {
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 9999;
+}
+
+#mw-grid-overlay main,
+#mw-grid-overlay div {
+	height: 100%;
+}
+
+#mw-grid-overlay main {
+	background: transparent;
+}
+
+#mw-grid-overlay [class*="col"] {
+	outline-color: transparent;
+	outline-color: rgba(0, 255, 255, 0.15);
+}
+
+#mw-grid-overlay [class*="col"]:before {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: hotpink;
+	background: rgba(255, 105, 180, 0.25);
+	box-shadow: inset 0 0 0 1px rgba(255, 105, 180, 0.25);
+}
+
+#mw-grid-overlay .container {
+	outline: 1px solid orange;
+}
+
+.mw-show-grid #mw-grid-overlay {
+	display: block;
+}
+
+.mw-show-grid [class*="col-"] {
+	background: transparent;
+	outline: 2px solid cyan;
+	outline-offset: -1px;
+}
+
+.mw-show-grid header {
+	background: rgba(0, 128, 0, 0.5);
+}
+
+.mw-show-grid footer {
+	background: rgba(0, 255, 255, 0.5);
 }

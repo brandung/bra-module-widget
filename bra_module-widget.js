@@ -56,10 +56,11 @@
 			$(this).nextUntil(self.settings.deepLinkObj).andSelf().wrapAll('<div class="mw-wrapper" />');
 		});
 
-		// append widget
-		self.settings.widget.appendTo('body');
 		// add grid overlay
 		_.addGrid();
+		
+		// append widget
+		self.settings.widget.appendTo('body');
 		// add event listener
 		_.addListener();
 		// get deep links
